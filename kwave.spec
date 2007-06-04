@@ -10,13 +10,12 @@ Name:		%{name}
 Version: 	%{version}
 Release: 	%mkrel %{release}
 Source0: 	http://ovh.dl.sourceforge.net/sourceforge/kwave/%{name}-%{version}.tar.gz
-Patch0:		kwave-0.7.3-new-flac.patch
 Group:  	Sound
 License:	GPL
 URL:		http://kwave.sourceforge.net/
-BuildRequires:	kdelibs-devel oggvorbis-devel mad-devel automake1.7
-BuildRequires:	libflac-devel jackit-devel gsl-devel libid3-devel
-BuildRequires:	esound-devel recode kdesdk libkdemultimedia1-arts-devel
+BuildRequires:	kdelibs-devel oggvorbis-devel mad-devel
+BuildRequires:	libflac++-devel jackit-devel gsl-devel libid3_3.8-devel
+BuildRequires:	esound-devel recode arts-devel kdesdk-po2xml kdemultimedia-arts-devel
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
@@ -42,18 +41,10 @@ for development with %{name}.
 
 %prep
 %setup -q
-%if %mdkversion <= 200600
-%patch0 -R -p1 -b .newflac
-%endif
 
 %build
-libtoolize --force --copy --automake
-aclocal-1.7 -I ./admin
-autoheader
-automake-1.7 --foreign --add-missing --copy --include-deps
-autoconf
-%configure	--enable-final
-%make
+CONFIGURE_OPTS="--with-install-root=$RPM_BUILD_ROOT ${CONFIGURE_OPTS}"
+make -f Makefile.dist
 
 %install
 rm -rf $RPM_BUILD_ROOT
