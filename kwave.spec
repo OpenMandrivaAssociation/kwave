@@ -1,5 +1,5 @@
 %define	name	kwave
-%define	version	0.7.6
+%define	version	0.7.9
 %define	release	1
 
 %define	major	0
@@ -61,8 +61,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %find_lang %{name}
 
-install -d $RPM_BUILD_ROOT%{_menudir}
-kdedesktop2mdkmenu.pl %{name} "Multimedia/Sound" $RPM_BUILD_ROOT%{_datadir}/applnk/Multimedia/%{name}.desktop $RPM_BUILD_ROOT%{_menudir}/%{name} kde
 install -m644 $RPM_BUILD_ROOT%{_iconsdir}/hicolor/16x16/apps/%{name}.png -D $RPM_BUILD_ROOT%{_miconsdir}/%{name}.png
 install -m644 $RPM_BUILD_ROOT%{_iconsdir}/hicolor/32x32/apps/%{name}.png -D $RPM_BUILD_ROOT%{_iconsdir}/%{name}.png
 install -m644 $RPM_BUILD_ROOT%{_iconsdir}/hicolor/48x48/apps/%{name}.png -D $RPM_BUILD_ROOT%{_liconsdir}/%{name}.png
@@ -102,7 +100,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_miconsdir}/%{name}.png
 %{_iconsdir}/%{name}.png
 %{_liconsdir}/%{name}.png
-%{_menudir}/%{name}
 
 %files -n %{libname}
 %defattr(-,root,root)
