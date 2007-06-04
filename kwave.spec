@@ -1,6 +1,5 @@
 %define	name	kwave
 %define	version	0.7.9
-%define	release	1
 
 %define	major	0
 %define	libname	%mklibname %{name} %{major}
@@ -8,7 +7,7 @@
 Summary:	A sound editor for KDE
 Name:		%{name}
 Version: 	%{version}
-Release: 	%mkrel %{release}
+Release: 	%mkrel 1
 Source0: 	http://ovh.dl.sourceforge.net/sourceforge/kwave/%{name}-%{version}.tar.gz
 Group:  	Sound
 License:	GPL
