@@ -43,8 +43,13 @@ for development with %{name}.
 %setup -q
 
 %build
+# fwang: it doesn't build against latest flac.
+# The author suggest remove it at the time.
+# See: http://sourceforge.net/tracker/index.php?func=detail&aid=1713655&group_id=6478&atid=106478
+rm -fr plugins/codec_flac
 CONFIGURE_OPTS="--with-install-root=$RPM_BUILD_ROOT ${CONFIGURE_OPTS}"
 make -f Makefile.dist
+make
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -88,6 +93,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/applnk/Multimedia/%{name}.desktop
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/apps/%{name}
+%dir %{_libdir}/kde3/plugins/%{name}
+%{_libdir}/kde3/plugins/%{name}/*
 %{_miconsdir}/%{name}.png
 %{_iconsdir}/%{name}.png
 %{_liconsdir}/%{name}.png
