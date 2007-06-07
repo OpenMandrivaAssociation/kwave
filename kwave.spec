@@ -48,6 +48,9 @@ for development with %{name}.
 # See: http://sourceforge.net/tracker/index.php?func=detail&aid=1713655&group_id=6478&atid=106478
 rm -fr plugins/codec_flac
 CONFIGURE_OPTS="--with-install-root=$RPM_BUILD_ROOT ${CONFIGURE_OPTS}"
+
+# fwang: There is no easy way guessing the correct arch :(
+sed -i -e 's|/lib|/%_lib|' acinclude.m4
 make -f Makefile.dist
 make
 
