@@ -1,5 +1,6 @@
 %define	name	kwave
-%define	version	0.7.9
+%define	version	0.8.0
+%define svnrel	2007
 
 %define	major	0
 %define	libname	%mklibname %{name} %{major}
@@ -7,13 +8,13 @@
 Summary:	A sound editor for KDE
 Name:		%{name}
 Version: 	%{version}
-Release: 	%mkrel 1
-Source0: 	http://ovh.dl.sourceforge.net/sourceforge/kwave/%{name}-%{version}.tar.gz
+Release: 	%mkrel -c %svnrel 1
+Source0: 	http://ovh.dl.sourceforge.net/sourceforge/kwave/%{name}-%{version}-svn%{svnrel}.tar.bz2
 Group:  	Sound
 License:	GPL
 URL:		http://kwave.sourceforge.net/
 BuildRequires:	kdelibs-devel oggvorbis-devel mad-devel
-BuildRequires:	imagemagick gettext
+BuildRequires:	imagemagick gettext cmake
 BuildRequires:	libflac++-devel jackit-devel gsl-devel libid3_3.8-devel
 BuildRequires:	esound-devel recode arts-devel kdesdk-po2xml kdemultimedia-arts-devel
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -24,39 +25,23 @@ A sound editor for KDE3.
 %package -n	%{libname}
 Summary:	Libraries needed by %{name}
 Group:		System/Libraries
+Obsoletes:	%{libname}-devel
 
 %description -n	%{libname}
 Libraries needed for %{name}
 
-%package -n	%{libname}-devel
-Summary:	Development tools for %{name}
-Group:		Development/C++
-Requires:	%{libname} = %{version}
-Provides:	lib%{name}-devel = %{version}-%{release}
-Provides:	%{name}-devel = %{version}-%{release}
-
-%description -n	%{libname}-devel
-This package contains the development libraries
-for development with %{name}.
-
 %prep
-%setup -q
+%setup -q -n %{name}
 
 %build
-# fwang: it doesn't build against latest flac.
-# The author suggest remove it at the time.
-# See: http://sourceforge.net/tracker/index.php?func=detail&aid=1713655&group_id=6478&atid=106478
-rm -fr plugins/codec_flac
-CONFIGURE_OPTS="--with-install-root=$RPM_BUILD_ROOT ${CONFIGURE_OPTS}"
-
-# fwang: There is no easy way guessing the correct arch :(
-sed -i -e 's|/lib|/%_lib|' acinclude.m4
-make -f Makefile.dist
-make
+%cmake
+%make
 
 %install
 rm -rf $RPM_BUILD_ROOT
+cd build
 %makeinstall_std
+cd -
 
 %find_lang %{name}
 
@@ -69,8 +54,9 @@ desktop-file-install	--vendor="" \
 			--add-category="Qt" \
 			--add-category="KDE" \
 			--add-category="Audio" \
-			--add-category="X-MandrivaLinux-Multimedia-Sound" \
 			%{buildroot}%{_datadir}/applnk/Multimedia/%{name}.desktop
+
+rm -f %{buildroot}%{_datadir}/applnk/Multimedia/%{name}.desktop
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
@@ -93,11 +79,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/%{name}
 %{_iconsdir}/*/*/apps/%{name}.png
 %{_datadir}/mimelnk/audio/*.desktop
-%{_datadir}/applnk/Multimedia/%{name}.desktop
+#%{_datadir}/applnk/Multimedia/%{name}.desktop
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/apps/%{name}
 %dir %{_libdir}/kde3/plugins/%{name}
-%{_libdir}/kde3/plugins/%{name}/*
+#%{_libdir}/kde3/plugins/%{name}/*
 %{_miconsdir}/%{name}.png
 %{_iconsdir}/%{name}.png
 %{_liconsdir}/%{name}.png
@@ -105,9 +91,4 @@ rm -rf $RPM_BUILD_ROOT
 %files -n %{libname}
 %defattr(-,root,root)
 %{_libdir}/lib*.so.%{major}*
-
-%files -n %{libname}-devel
-%defattr(-,root,root)
-%{_libdir}/lib*.la
 %{_libdir}/lib*.so
-
