@@ -82,7 +82,7 @@ rm -rf $RPM_BUILD_ROOT
 #%{_datadir}/applnk/Multimedia/%{name}.desktop
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/apps/%{name}
-%dir %{_libdir}/kde3/plugins/%{name}
+#%dir %{_libdir}/kde3/plugins/%{name}
 #%{_libdir}/kde3/plugins/%{name}/*
 %{_miconsdir}/%{name}.png
 %{_iconsdir}/%{name}.png
