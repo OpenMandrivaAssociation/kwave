@@ -1,6 +1,6 @@
 %define	name	kwave
 %define	version	0.8.0
-%define svnrel	2007
+%define svnrel	2008
 
 %define	major	0
 %define	libname	%mklibname %{name} %{major}
