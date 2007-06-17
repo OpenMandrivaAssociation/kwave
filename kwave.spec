@@ -57,6 +57,7 @@ desktop-file-install	--vendor="" \
 			%{buildroot}%{_datadir}/applnk/Multimedia/%{name}.desktop
 
 rm -f %{buildroot}%{_datadir}/applnk/Multimedia/%{name}.desktop
+rm -fr %{buildroot}%{_datadir}/doc/%{name}*
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
