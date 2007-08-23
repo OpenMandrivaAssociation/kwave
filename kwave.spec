@@ -38,6 +38,9 @@ Provides:	%{name}-devel = %epoch:%version-%release
 Requires:	%libname = %epoch:%version-%release
 Conflicts:	%libname < 1:0.7.10-2mdk
 
+%description -n %{develname}
+This package contains development files provided by %{name}.
+
 %prep
 %setup -q
 
