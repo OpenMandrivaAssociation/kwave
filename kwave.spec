@@ -32,7 +32,7 @@ Libraries needed for %{name}
 
 %package -n	%{develname}
 Summary:	Development files provdied by %{name}
-Group:		Development/C++
+Group:		Development/KDE and Qt
 Obsoletes:	%libname-devel
 Provides:	%{name}-devel = %epoch:%version-%release
 Requires:	%libname = %epoch:%version-%release
