@@ -1,15 +1,15 @@
 %define	name	kwave
-%define	version	0.8.0
-%define svnrel	2008
+%define	version	0.7.10
 
 %define	major	0
 %define	libname	%mklibname %{name} %{major}
 
 Summary:	A sound editor for KDE
-Name:		%{name}
-Version: 	%{version}
-Release: 	%mkrel -c %svnrel 1
-Source0: 	http://ovh.dl.sourceforge.net/sourceforge/kwave/%{name}-%{version}-svn%{svnrel}.tar.bz2
+Name:		kwave
+Version: 	0.7.10
+Release: 	%mkrel 1
+Epoch:		1
+Source0: 	http://ovh.dl.sourceforge.net/sourceforge/kwave/%{name}-%{version}.tar.gz
 Group:  	Sound
 License:	GPL
 URL:		http://kwave.sourceforge.net/
@@ -31,7 +31,7 @@ Obsoletes:	%{libname}-devel
 Libraries needed for %{name}
 
 %prep
-%setup -q -n %{name}
+%setup -q
 
 %build
 %cmake
@@ -49,14 +49,13 @@ install -m644 $RPM_BUILD_ROOT%{_iconsdir}/hicolor/16x16/apps/%{name}.png -D $RPM
 install -m644 $RPM_BUILD_ROOT%{_iconsdir}/hicolor/32x32/apps/%{name}.png -D $RPM_BUILD_ROOT%{_iconsdir}/%{name}.png
 install -m644 $RPM_BUILD_ROOT%{_iconsdir}/hicolor/48x48/apps/%{name}.png -D $RPM_BUILD_ROOT%{_liconsdir}/%{name}.png
 
-desktop-file-install	--vendor="" \
+desktop-file-install	--vendor="" --delete-original \
 			--dir $RPM_BUILD_ROOT%{_datadir}/applications \
 			--add-category="Qt" \
 			--add-category="KDE" \
 			--add-category="Audio" \
 			%{buildroot}%{_datadir}/applnk/Multimedia/%{name}.desktop
 
-rm -f %{buildroot}%{_datadir}/applnk/Multimedia/%{name}.desktop
 rm -fr %{buildroot}%{_datadir}/doc/%{name}*
 
 %post -n %{libname} -p /sbin/ldconfig
@@ -64,9 +63,11 @@ rm -fr %{buildroot}%{_datadir}/doc/%{name}*
 
 %post
 %update_menus
+%update_icon_cache hicolor
 
 %postun
 %clean_menus
+%clean_icon_cache hicolor
 
 %clean
 rm -rf $RPM_BUILD_ROOT
