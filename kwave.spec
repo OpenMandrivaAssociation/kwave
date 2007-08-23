@@ -3,11 +3,12 @@
 
 %define	major	0
 %define	libname	%mklibname %{name} %{major}
+%define develname %mklibname -d %{name}
 
 Summary:	A sound editor for KDE
 Name:		kwave
 Version: 	0.7.10
-Release: 	%mkrel 1
+Release: 	%mkrel 2
 Epoch:		1
 Source0: 	http://ovh.dl.sourceforge.net/sourceforge/kwave/%{name}-%{version}.tar.gz
 Group:  	Sound
@@ -25,10 +26,17 @@ A sound editor for KDE3.
 %package -n	%{libname}
 Summary:	Libraries needed by %{name}
 Group:		System/Libraries
-Obsoletes:	%{libname}-devel
 
 %description -n	%{libname}
 Libraries needed for %{name}
+
+%package -n	%{develname}
+Summary:	Development files provdied by %{name}
+Group:		Development/C++
+Obsoletes:	%libname-devel
+Provides:	%{name}-devel = %epoch:%version-%release
+Requires:	%libname = %epoch:%version-%release
+Conflicts:	%libname < 1:0.7.10-2mdk
 
 %prep
 %setup -q
@@ -93,4 +101,6 @@ rm -rf $RPM_BUILD_ROOT
 %files -n %{libname}
 %defattr(-,root,root)
 %{_libdir}/lib*.so.%{major}*
-%{_libdir}/lib*.so
+
+%files -n %{develname}
+%{_libdir}/*.so
