@@ -19,6 +19,7 @@ BuildRequires:	kdelibs-devel oggvorbis-devel mad-devel
 BuildRequires:	imagemagick gettext cmake
 BuildRequires:	libflac++-devel jackit-devel gsl-devel libid3_3.8-devel
 BuildRequires:	esound-devel recode arts-devel kdesdk-po2xml kdemultimedia-arts-devel
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 A sound editor for KDE3.
