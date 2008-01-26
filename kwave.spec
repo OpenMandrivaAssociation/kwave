@@ -9,6 +9,7 @@ Release: 	%mkrel 1
 Epoch:		1
 Source0: 	http://ovh.dl.sourceforge.net/sourceforge/kwave/%{name}-%{version}.tar.gz
 Patch0:		kwave-0.7.10-remove-fr-comment.patch
+Patch1:		kwave-0.7.11-fix-desktop-entry.patch
 Group:  	Sound
 License:	GPLv2+
 URL:		http://kwave.sourceforge.net/
@@ -42,6 +43,7 @@ This package contains development files provided by %{name}.
 %prep
 %setup -q
 %patch0 -p0
+%patch1 -p0
 
 %build
 %cmake
