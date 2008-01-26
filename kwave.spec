@@ -1,19 +1,16 @@
-%define	name	kwave
-%define	version	0.7.10
-
 %define	major	0
 %define	libname	%mklibname %{name} %{major}
 %define develname %mklibname -d %{name}
 
 Summary:	A sound editor for KDE
 Name:		kwave
-Version: 	0.7.10
-Release: 	%mkrel 4
+Version: 	0.7.11
+Release: 	%mkrel 1
 Epoch:		1
 Source0: 	http://ovh.dl.sourceforge.net/sourceforge/kwave/%{name}-%{version}.tar.gz
 Patch0:		kwave-0.7.10-remove-fr-comment.patch
 Group:  	Sound
-License:	GPL
+License:	GPLv2+
 URL:		http://kwave.sourceforge.net/
 BuildRequires:	kdelibs-devel oggvorbis-devel mad-devel
 BuildRequires:	imagemagick gettext cmake
@@ -56,7 +53,7 @@ cd build
 %makeinstall_std
 cd -
 
-%find_lang %{name}
+%find_lang %{name} --with-html
 
 install -m644 $RPM_BUILD_ROOT%{_iconsdir}/hicolor/16x16/apps/%{name}.png -D $RPM_BUILD_ROOT%{_miconsdir}/%{name}.png
 install -m644 $RPM_BUILD_ROOT%{_iconsdir}/hicolor/32x32/apps/%{name}.png -D $RPM_BUILD_ROOT%{_iconsdir}/%{name}.png
@@ -89,16 +86,11 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 %doc CHANGES README TODO
 %doc %{_docdir}/HTML/en/%{name}
-%lang(fr) %doc %{_docdir}/HTML/fr/%{name}
-%lang(de) %doc %{_docdir}/HTML/de/%{name}
 %{_bindir}/%{name}
 %{_iconsdir}/*/*/apps/%{name}.png
 %{_datadir}/mimelnk/audio/*.desktop
-#%{_datadir}/applnk/Multimedia/%{name}.desktop
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/apps/%{name}
-#%dir %{_libdir}/kde3/plugins/%{name}
-#%{_libdir}/kde3/plugins/%{name}/*
 %{_miconsdir}/%{name}.png
 %{_iconsdir}/%{name}.png
 %{_liconsdir}/%{name}.png
