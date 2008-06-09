@@ -70,8 +70,12 @@ desktop-file-install	--vendor="" --delete-original \
 
 rm -fr %{buildroot}%{_datadir}/doc/%{name}*
 
+%if %mdkversion < 200900
 %post -n %{libname} -p /sbin/ldconfig
+%endif
+%if %mdkversion < 200900
 %postun -n %{libname} -p /sbin/ldconfig
+%endif
 
 %post
 %update_menus
