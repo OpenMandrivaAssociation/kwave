@@ -16,6 +16,8 @@ Buildrequires:	libalsa-devel
 BuildRequires:	oggvorbis-devel
 BuildRequires:	libflac++-devel
 BuildRequires:	audiofile-devel
+Buildrequires:	libid3-devel
+BuildRequires:	mad-devel
 BuildRequires:	ImageMagick
 BuildRequires:	kdesdk4-po2xml
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -46,7 +48,7 @@ This package contains development files provided by %{name}.
 
 %build
 #fwang: gsl disabled due to license incompatible
-%cmake_kde4 -DWITH_GSL=OFF
+%cmake_kde4 -DWITH_GSL=OFF -DWITH_MP3=ON
 %make
 
 %install
