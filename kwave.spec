@@ -18,7 +18,7 @@ BuildRequires:	libflac++-devel
 BuildRequires:	audiofile-devel
 Buildrequires:	libid3-devel
 BuildRequires:	mad-devel
-BuildRequires:	ImageMagick
+BuildRequires:	imagemagick
 BuildRequires:	kdesdk4-po2xml
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
