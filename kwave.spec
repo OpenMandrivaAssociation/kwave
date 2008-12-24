@@ -84,7 +84,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 %doc CHANGES README TODO
 %{_kde_bindir}/%{name}
-%{_kde_iconsdir}/*/*/apps/%{name}.png
+%{_kde_iconsdir}/*/*/apps/%{name}.*
 %{_kde_datadir}/applications/kde4/%{name}.desktop
 %{_kde_datadir}/apps/%{name}
 %{_kde_libdir}/kde4/plugins/%{name}
