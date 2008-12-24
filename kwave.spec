@@ -24,7 +24,13 @@ BuildRequires:	fftw3-devel
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
-A sound editor for KDE.
+Kwave is a sound editor designed for the KDE Desktop Environment.
+
+With Kwave you can edit many sorts of wav-files including multi-channel
+files. You are able to alter and play back each channel on its own.
+Kwave also includes many plugins (most are still under development) to
+transform the wave-file in several ways and presents a graphical view
+with a complete zoom- and scroll capability.
 
 %package -n	%{libname}
 Summary:	Libraries needed by %{name}
