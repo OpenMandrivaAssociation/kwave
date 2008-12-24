@@ -20,6 +20,7 @@ Buildrequires:	libid3-devel
 BuildRequires:	mad-devel
 BuildRequires:	imagemagick
 BuildRequires:	kdesdk4-po2xml
+BuildRequires:	fftw3-devel
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
