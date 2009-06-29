@@ -21,6 +21,7 @@ BuildRequires:	mad-devel
 BuildRequires:	imagemagick
 BuildRequires:	kdesdk4-po2xml
 BuildRequires:	fftw3-devel
+Obsoletes:	%{name}-devel < 0.8.3
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
@@ -38,17 +39,6 @@ Group:		System/Libraries
 
 %description -n	%{libname}
 Libraries needed for %{name}
-
-%package -n	%{develname}
-Summary:	Development files provdied by %{name}
-Group:		Development/KDE and Qt
-Obsoletes:	%libname-devel
-Provides:	%{name}-devel = %epoch:%version-%release
-Requires:	%libname = %epoch:%version-%release
-Conflicts:	%libname < 1:0.7.10-2mdk
-
-%description -n %{develname}
-This package contains development files provided by %{name}.
 
 %prep
 %setup -q
@@ -98,6 +88,3 @@ rm -rf $RPM_BUILD_ROOT
 %files -n %{libname}
 %defattr(-,root,root)
 %{_kde_libdir}/lib*.so.%{major}*
-
-%files -n %{develname}
-%{_kde_libdir}/*.so
