@@ -4,8 +4,8 @@
 
 Summary:	A sound editor for KDE
 Name:		kwave
-Version: 	0.8.4
-Release: 	%mkrel 2
+Version: 	0.8.5
+Release: 	%mkrel 1
 Epoch:		1
 Source0: 	http://prdownloads.sourceforge.net/kwave/%name-%version-1.tar.bz2
 Group:  	Sound
