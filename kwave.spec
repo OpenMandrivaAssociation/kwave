@@ -8,6 +8,7 @@ Version: 	0.8.5
 Release: 	%mkrel 2
 Epoch:		1
 Source0: 	http://prdownloads.sourceforge.net/kwave/%name-%version-1.tar.bz2
+Patch0: 	%name-0.8.5-qt47.patch
 Group:  	Sound
 License:	GPLv2+
 URL:		http://kwave.sourceforge.net/
@@ -43,10 +44,17 @@ Libraries needed for %{name}
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
+#emuse: fix ambiguous int to QString conversions
+perl -i -e "s/QString(0)/QString(\"\")/g" plugins/sonogram/SonogramDialog.cpp
+perl -i -e "s/_group(0)/_group(\"\")/g" libgui/KwaveFileDialog.cpp libgui/MenuItem.cpp 
+perl -i -e "s/last_url \= 0/last_url \= \"\"/g" libgui/KwaveFileDialog.h 
+perl -i -e "s/last_ext \= 0/last_ext \= \"\"/g" libgui/KwaveFileDialog.h 
 #fwang: gsl disabled due to license incompatible
-%cmake_kde4 -DWITH_GSL=OFF -DWITH_MP3=ON
+#emuse: disable broken documentation
+%cmake_kde4 -DWITH_GSL=OFF -DWITH_MP3=ON -DWITH_DOC=OFF
 %make
 
 %install
