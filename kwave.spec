@@ -23,7 +23,6 @@ BuildRequires:	imagemagick
 BuildRequires:	kdesdk4-po2xml
 BuildRequires:	fftw3-devel
 Obsoletes:	%{name}-devel < 0.8.3
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 Kwave is a sound editor designed for the KDE Desktop Environment.
@@ -58,38 +57,15 @@ perl -i -e "s/last_ext \= 0/last_ext \= \"\"/g" libgui/KwaveFileDialog.h
 %make
 
 %install
-rm -rf $RPM_BUILD_ROOT
 %makeinstall_std -C build
-
 %find_lang %{name} --with-html
-
-%if %mdkversion < 200900
-%post -n %{libname} -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %{libname} -p /sbin/ldconfig
-%endif
-
-%if %mdkversion < 200900
-%post
-%update_menus
-%update_icon_cache hicolor
-%endif
-
-%if %mdkversion < 200900
-%postun
-%clean_menus
-%clean_icon_cache hicolor
-%endif
-
-%clean
-rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(-,root,root)
 %doc CHANGES README TODO
 %{_kde_bindir}/%{name}
 %{_kde_iconsdir}/*/*/apps/%{name}.*
+%{_kde_iconsdir}/*/*/actions/%{name}*
 %{_kde_datadir}/applications/kde4/%{name}.desktop
 %{_kde_datadir}/apps/%{name}
 %{_kde_libdir}/kde4/plugins/%{name}
