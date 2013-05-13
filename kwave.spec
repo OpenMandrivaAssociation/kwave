@@ -18,7 +18,7 @@ BuildRequires:	libflac++-devel
 BuildRequires:	audiofile-devel
 Buildrequires:	libid3-devel
 BuildRequires:	mad-devel
-BuildRequires:	libsamplerate-devel >= 0.1.3
+BuildRequires:	pkgconfig(samplerate) >= 0.1.3
 BuildRequires:	imagemagick
 BuildRequires:	kdesdk4-po2xml
 BuildRequires:	fftw3-devel
