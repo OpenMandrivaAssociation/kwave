@@ -1,5 +1,6 @@
 %define major 0
 %define libname %mklibname %{name} %{major}
+%define libgui %mklibname %{name}gui %{major}
 
 Summary:	A sound editor for KDE
 Name:		kwave
@@ -37,7 +38,7 @@ with a complete zoom- and scroll capability.
 %{_kde_bindir}/%{name}
 %{_kde_iconsdir}/*/*/apps/%{name}.*
 %{_kde_iconsdir}/*/*/actions/%{name}*
-%{_kde_datadir}/applications/kde4/%{name}.desktop
+%{_kde_applicationsdir}/%{name}.desktop
 %{_kde_datadir}/apps/%{name}
 %{_kde_libdir}/kde4/plugins/%{name}
 
@@ -48,10 +49,23 @@ Summary:	Libraries needed by %{name}
 Group:		System/Libraries
 
 %description -n %{libname}
-Libraries needed for %{name}
+Libraries needed for %{name}.
 
 %files -n %{libname}
 %{_kde_libdir}/lib%{name}.so.%{major}*
+
+#----------------------------------------------------------------------------
+
+%package -n %{libgui}
+Summary:	Libraries needed by %{name}
+Group:		System/Libraries
+Conflicts:	%{_lib}kwave0 < 0.8.10
+
+%description -n %{libgui}
+Libraries needed for %{name}.
+
+%files -n %{libgui}
+%{_kde_libdir}/lib%{name}gui.so.%{major}*
 
 #----------------------------------------------------------------------------
 
