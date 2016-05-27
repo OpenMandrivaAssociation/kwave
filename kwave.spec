@@ -43,6 +43,7 @@ BuildRequires:	pkgconfig(opus)
 BuildRequires:	pkgconfig(samplerate)
 BuildRequires:	pkgconfig(vorbis)
 BuildRequires:	id3lib-devel
+BuildRequires:	librsvg
 Suggests:	lame
 Suggests:	twolame
 
