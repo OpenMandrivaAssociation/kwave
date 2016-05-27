@@ -75,7 +75,7 @@ Group:		System/Libraries
 Libraries needed for %{name}.
 
 %files -n %{libname}
-%{_kde_libdir}/lib%{name}.so.%{major}*
+%{_libdir}/lib%{name}.so.%{major}*
 
 #----------------------------------------------------------------------------
 
@@ -88,7 +88,7 @@ Conflicts:	%{_lib}kwave0 < 0.8.10
 Libraries needed for %{name}.
 
 %files -n %{libgui}
-%{_kde_libdir}/lib%{name}gui.so.%{major}*
+%{_libdir}/lib%{name}gui.so.%{major}*
 
 #----------------------------------------------------------------------------
 
