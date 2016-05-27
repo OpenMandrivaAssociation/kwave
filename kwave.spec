@@ -42,6 +42,7 @@ BuildRequires:	pkgconfig(mad)
 BuildRequires:	pkgconfig(opus)
 BuildRequires:	pkgconfig(samplerate)
 BuildRequires:	pkgconfig(vorbis)
+BuildRequires:	id3lib-devel
 Suggests:	lame
 Suggests:	twolame
 
