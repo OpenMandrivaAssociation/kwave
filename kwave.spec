@@ -58,12 +58,12 @@ with a complete zoom- and scroll capability.
 
 %files -f %{name}.lang
 %doc CHANGES README TODO
-%{_kde_bindir}/%{name}
-%{_kde_iconsdir}/*/*/apps/%{name}.*
-%{_kde_iconsdir}/*/*/actions/%{name}*
-%{_kde_applicationsdir}/%{name}.desktop
-%{_kde_datadir}/apps/%{name}
-%{_kde_libdir}/kde4/plugins/%{name}
+%{_bindir}/%{name}
+%{_iconsdir}/*/*/*/%{name}*
+%{_datadir}/%{name}
+%{_datadir}/appdata/kwave.appdata.xml
+%{_datadir}/applications/kwave.desktop
+%{_libdir}/qt5/plugins/*.so
 
 #----------------------------------------------------------------------------
 
