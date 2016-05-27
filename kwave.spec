@@ -16,7 +16,7 @@ BuildRequires:	pkgconfig(Qt5Core)
 BuildRequires:	pkgconfig(Qt5Multimedia)
 BuildRequires:	pkgconfig(Qt5Widgets)
 BuildRequires:	cmake(ECM)
-BuildRequires:	cmake(KF5Completion
+BuildRequires:	cmake(KF5Completion)
 BuildRequires:	cmake(KF5Config)
 BuildRequires:	cmake(KF5ConfigWidgets)
 BuildRequires:	cmake(KF5CoreAddons)
