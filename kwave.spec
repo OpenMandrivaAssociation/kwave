@@ -1,6 +1,7 @@
 %define major 0
 %define libname %mklibname %{name} %{major}
 %define libgui %mklibname %{name}gui %{major}
+%define _disable_lto 1
 
 Summary:	A sound editor for KDE
 Name:		kwave
