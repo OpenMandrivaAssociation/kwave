@@ -10,7 +10,7 @@ Epoch:		1
 License:	GPLv2+
 Group:		Sound
 Url:		http://kwave.sourceforge.net/
-Source0:	http://prdownloads.sourceforge.net/kwave/%{name}-%{version}-1.tar.bz2
+Source0:	http://prdownloads.sourceforge.net/kwave/%{name}-%{version}.tar.xz
 BuildRequires:	pkgconfig(Qt5Concurrent)
 BuildRequires:	pkgconfig(Qt5Core)
 BuildRequires:	pkgconfig(Qt5Multimedia)
