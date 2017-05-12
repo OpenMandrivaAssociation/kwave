@@ -4,7 +4,7 @@
 
 Summary:	A sound editor for KDE
 Name:		kwave
-Version:	0.9.1
+Version:	17.04.0
 Release:	1
 Epoch:		1
 License:	GPLv2+
@@ -44,7 +44,7 @@ BuildRequires:	pkgconfig(samplerate)
 BuildRequires:	pkgconfig(vorbis)
 BuildRequires:	id3lib-devel
 BuildRequires:	librsvg
-Suggests:	lame
+Requires:	lame
 Suggests:	twolame
 
 %description
