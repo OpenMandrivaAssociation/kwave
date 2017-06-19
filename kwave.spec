@@ -1,11 +1,11 @@
-%define major 0
+%define major 17
 %define libname %mklibname %{name} %{major}
 %define libgui %mklibname %{name}gui %{major}
 %define _disable_lto 1
 
 Summary:	A sound editor for KDE
 Name:		kwave
-Version:	17.04.0
+Version:	17.04.2
 Release:	1
 Epoch:		1
 License:	GPLv2+
@@ -62,9 +62,10 @@ with a complete zoom- and scroll capability.
 %{_bindir}/%{name}
 %{_iconsdir}/*/*/*/%{name}*
 %{_datadir}/%{name}
-%{_datadir}/appdata/kwave.appdata.xml
-%{_datadir}/applications/kwave.desktop
-%{_libdir}/qt5/plugins/*.so
+%{_datadir}/applications/org.kde.kwave.desktop
+%{_libdir}/qt5/plugins/kwave
+%{_datadir}/kservicetypes5/kwave-plugin.desktop
+%{_datadir}/metainfo/org.kde.kwave.appdata.xml
 
 #----------------------------------------------------------------------------
 
@@ -95,6 +96,9 @@ Libraries needed for %{name}.
 
 %prep
 %setup -q
+# FIXME workaround for clang 5.0-305643 compile time error
+# causes an undefined reference to a template variable
+export CXX=g++
 %cmake_kde5 -DWITH_MP3=ON
 
 %build
