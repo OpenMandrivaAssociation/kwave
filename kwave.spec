@@ -2,16 +2,17 @@
 %define libname %mklibname %{name} %{major}
 %define libgui %mklibname %{name}gui %{major}
 %define _disable_lto 1
+%define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Summary:	A sound editor for KDE
 Name:		kwave
-Version:	17.08.1
+Version:	17.08.3
 Release:	1
 Epoch:		1
 License:	GPLv2+
 Group:		Sound
 Url:		http://kwave.sourceforge.net/
-Source0:	http://prdownloads.sourceforge.net/kwave/%{name}-%{version}.tar.xz
+Source0:	http://download.kde.org/%{stable}/applications/%{version}/src/%{name}-%{version}.tar.xz
 BuildRequires:	pkgconfig(Qt5Concurrent)
 BuildRequires:	pkgconfig(Qt5Core)
 BuildRequires:	pkgconfig(Qt5Multimedia)
