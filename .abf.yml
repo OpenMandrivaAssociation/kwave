@@ -1,2 +1,4 @@
+removed_sources:
+  kwave-17.12.1.tar.xz: 148686cf56e9a07cc86a44f97c7d4f5bff92d860
 sources:
-  kwave-0.9.1-1.tar.bz2: 685c499b7891fecd0a149c703edd16fbbb46f515
+  kwave-17.12.2.tar.xz: 354c8dda98aea86ba84c52dccdb787de6037ebc6

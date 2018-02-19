@@ -1,16 +1,18 @@
-%define major 0
+%define major 17
 %define libname %mklibname %{name} %{major}
 %define libgui %mklibname %{name}gui %{major}
+%define _disable_lto 1
+%define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Summary:	A sound editor for KDE
 Name:		kwave
-Version:	0.9.1
+Version:	 17.12.2
 Release:	1
 Epoch:		1
 License:	GPLv2+
 Group:		Sound
 Url:		http://kwave.sourceforge.net/
-Source0:	http://prdownloads.sourceforge.net/kwave/%{name}-%{version}-1.tar.bz2
+Source0:	http://download.kde.org/%{stable}/applications/%{version}/src/%{name}-%{version}.tar.xz
 BuildRequires:	pkgconfig(Qt5Concurrent)
 BuildRequires:	pkgconfig(Qt5Core)
 BuildRequires:	pkgconfig(Qt5Multimedia)
@@ -44,7 +46,7 @@ BuildRequires:	pkgconfig(samplerate)
 BuildRequires:	pkgconfig(vorbis)
 BuildRequires:	id3lib-devel
 BuildRequires:	librsvg
-Suggests:	lame
+Requires:	lame
 Suggests:	twolame
 
 %description
@@ -61,9 +63,10 @@ with a complete zoom- and scroll capability.
 %{_bindir}/%{name}
 %{_iconsdir}/*/*/*/%{name}*
 %{_datadir}/%{name}
-%{_datadir}/appdata/kwave.appdata.xml
-%{_datadir}/applications/kwave.desktop
-%{_libdir}/qt5/plugins/*.so
+%{_datadir}/applications/org.kde.kwave.desktop
+%{_libdir}/qt5/plugins/kwave
+%{_datadir}/kservicetypes5/kwave-plugin.desktop
+%{_datadir}/metainfo/org.kde.kwave.appdata.xml
 
 #----------------------------------------------------------------------------
 
@@ -94,6 +97,9 @@ Libraries needed for %{name}.
 
 %prep
 %setup -q
+# FIXME workaround for clang 5.0-305643 compile time error
+# causes an undefined reference to a template variable
+export CXX=g++
 %cmake_kde5 -DWITH_MP3=ON
 
 %build
