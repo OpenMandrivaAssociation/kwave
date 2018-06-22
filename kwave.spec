@@ -1,4 +1,4 @@
-%define major 17
+%define major 18
 %define libname %mklibname %{name} %{major}
 %define libgui %mklibname %{name}gui %{major}
 %define _disable_lto 1
@@ -6,7 +6,7 @@
 
 Summary:	A sound editor for KDE
 Name:		kwave
-Version:	 17.12.2
+Version:	18.04.2
 Release:	1
 Epoch:		1
 License:	GPLv2+
@@ -73,6 +73,7 @@ with a complete zoom- and scroll capability.
 %package -n %{libname}
 Summary:	Libraries needed by %{name}
 Group:		System/Libraries
+Obsoletes:	%mklibname %{name} 17
 
 %description -n %{libname}
 Libraries needed for %{name}.
@@ -86,6 +87,7 @@ Libraries needed for %{name}.
 Summary:	Libraries needed by %{name}
 Group:		System/Libraries
 Conflicts:	%{_lib}kwave0 < 0.8.10
+Obsoletes:	%mklibname %{name}gui 17
 
 %description -n %{libgui}
 Libraries needed for %{name}.
