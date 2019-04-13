@@ -1,14 +1,9 @@
-%define major 18
-%define libname %mklibname %{name} %{major}
-%define libgui %mklibname %{name}gui %{major}
-%define _disable_lto 1
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Summary:	A sound editor for KDE
 Name:		kwave
-Version:	18.12.3
-Release:	2
-Epoch:		1
+Version:	19.04.0
+Release:	1
 License:	GPLv2+
 Group:		Sound
 Url:		http://kwave.sourceforge.net/
@@ -49,6 +44,12 @@ BuildRequires:	id3lib-devel >= 3.8.1
 BuildRequires:	librsvg
 Requires:	lame
 Suggests:	twolame
+Obsoletes:	%mklibname %{name} 17
+Obsoletes:	%mklibname %{name}gui 17
+Obsoletes:	%mklibname %{name} 18
+Obsoletes:	%mklibname %{name}gui 18
+Obsoletes:	%mklibname %{name} 19
+Obsoletes:	%mklibname %{name}gui 19
 
 %description
 Kwave is a sound editor designed for the KDE Desktop Environment.
@@ -68,41 +69,16 @@ with a complete zoom- and scroll capability.
 %{_libdir}/qt5/plugins/kwave
 %{_datadir}/kservicetypes5/kwave-plugin.desktop
 %{_datadir}/metainfo/org.kde.kwave.appdata.xml
-
-#----------------------------------------------------------------------------
-
-%package -n %{libname}
-Summary:	Libraries needed by %{name}
-Group:		System/Libraries
-Obsoletes:	%mklibname %{name} 17
-
-%description -n %{libname}
-Libraries needed for %{name}.
-
-%files -n %{libname}
-%{_libdir}/lib%{name}.so.%{major}*
-
-#----------------------------------------------------------------------------
-
-%package -n %{libgui}
-Summary:	Libraries needed by %{name}
-Group:		System/Libraries
-Conflicts:	%{_lib}kwave0 < 0.8.10
-Obsoletes:	%mklibname %{name}gui 17
-
-%description -n %{libgui}
-Libraries needed for %{name}.
-
-%files -n %{libgui}
-%{_libdir}/lib%{name}gui.so.%{major}*
+# Those are really internal libraries that can't be used by anything else.
+# They also aren't optional. There's no point in splitting them into lib
+# packages.
+%{_libdir}/lib%{name}.so.*
+%{_libdir}/lib%{name}gui.so.*
 
 #----------------------------------------------------------------------------
 
 %prep
 %setup -q
-# FIXME workaround for clang 5.0-305643 compile time error
-# causes an undefined reference to a template variable
-export CXX=g++
 %cmake_kde5 -DWITH_MP3=ON
 
 %build
