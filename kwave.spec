@@ -2,8 +2,8 @@
 
 Summary:	A sound editor for KDE
 Name:		kwave
-Version:	19.04.0
-Release:	2
+Version:	19.04.1
+Release:	1
 License:	GPLv2+
 Group:		Sound
 Url:		http://kwave.sourceforge.net/
