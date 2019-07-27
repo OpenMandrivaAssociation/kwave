@@ -2,12 +2,13 @@
 
 Summary:	A sound editor for KDE
 Name:		kwave
-Version:	19.04.2
+Version:	19.07.80
 Release:	1
 License:	GPLv2+
 Group:		Sound
 Url:		http://kwave.sourceforge.net/
 Source0:	http://download.kde.org/%{stable}/applications/%{version}/src/%{name}-%{version}.tar.xz
+Patch0:		kwave-19.07.80-compile.patch
 BuildRequires:	pkgconfig(Qt5Concurrent)
 BuildRequires:	pkgconfig(Qt5Core)
 BuildRequires:	pkgconfig(Qt5Multimedia)
@@ -78,7 +79,7 @@ with a complete zoom- and scroll capability.
 #----------------------------------------------------------------------------
 
 %prep
-%setup -q
+%autosetup -p1
 %cmake_kde5 -DWITH_MP3=ON
 
 %build
