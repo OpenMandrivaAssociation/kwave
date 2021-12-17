@@ -43,6 +43,8 @@ BuildRequires:	pkgconfig(vorbis)
 BuildRequires:	pkgconfig(zlib)
 BuildRequires:	id3lib-devel >= 3.8.1
 BuildRequires:	librsvg
+# For converting icons
+BuildRequires:	ImageMagick
 Requires:	lame
 Suggests:	twolame
 Obsoletes:	%mklibname %{name} 17
