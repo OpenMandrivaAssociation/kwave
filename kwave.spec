@@ -1,9 +1,14 @@
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
+%ifarch znver1
+# Workaround for crash on startup with default flags
+%global optflags -O3 -march=znver1 -mtune=znver1 -mmmx -msse -msse2 -mssse3 -msse4a -msse4.1 -msse4.2 -mavx -mavx2 -msha -maes -mclflushopt -mfsgsbase -mrdrnd -mfma -mrdseed -mpopcnt -madx -mbmi -mbmi2 -mfxsr -mxsave -mxsaveopt -mxsavec -mxsaves -mmwaitx -mclzero -mfpmath=sse -g3 -gdwarf-4 -flto
+%endif
+
 Summary:	A sound editor for KDE
 Name:		kwave
 Version:	21.12.0
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		Sound
 Url:		http://kwave.sourceforge.net/
