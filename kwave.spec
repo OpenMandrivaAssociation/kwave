@@ -7,8 +7,8 @@
 
 Summary:	A sound editor for KDE
 Name:		kwave
-Version:	21.12.0
-Release:	2
+Version:	21.12.1
+Release:	1
 License:	GPLv2+
 Group:		Sound
 Url:		http://kwave.sourceforge.net/
