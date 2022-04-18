@@ -36,7 +36,7 @@ BuildRequires:	cmake(KF5Service)
 BuildRequires:	cmake(KF5TextWidgets)
 BuildRequires:	cmake(KF5XmlGui)
 BuildRequires:	cmake(KF5WidgetsAddons)
-Buildrequires:	pkgconfig(alsa)
+BuildRequires:	pkgconfig(alsa)
 BuildRequires:	pkgconfig(audiofile)
 BuildRequires:	pkgconfig(fftw3)
 BuildRequires:	pkgconfig(flac++)
@@ -87,7 +87,16 @@ with a complete zoom- and scroll capability.
 
 %prep
 %autosetup -p1
-%cmake_kde5 -DWITH_MP3=ON
+%cmake_kde5 \
+# As of 22.03.80/90 an error occur on aarch64 during compilation when converting images.
+# With disabled imagemagick and only enabled librsvg converting success on x86_64 but on aarch64 filing at configure time
+# with error:  "Found rsvg but conversion failed, falling back to convert from ImageMagick" and using imagemagick on aarch64 cause convert failure.
+# Let's disable for now building documentation on aarch64.
+
+%ifarch aarch64
+            -DWITH_DOC=OFF \
+%endif            
+            -DWITH_MP3=ON
 
 %build
 %ninja -C build
