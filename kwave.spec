@@ -92,7 +92,6 @@ with a complete zoom- and scroll capability.
 # With disabled imagemagick and only enabled librsvg converting success on x86_64 but on aarch64 filing at configure time
 # with error:  "Found rsvg but conversion failed, falling back to convert from ImageMagick" and using imagemagick on aarch64 cause convert failure.
 # Let's disable for now building documentation on aarch64.
-
 %ifarch aarch64
             -DWITH_DOC=OFF \
 %endif            
