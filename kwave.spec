@@ -47,7 +47,7 @@ BuildRequires:	pkgconfig(samplerate)
 BuildRequires:	pkgconfig(vorbis)
 BuildRequires:	pkgconfig(zlib)
 BuildRequires:	id3lib-devel >= 3.8.1
-BuildRequires:	pkgconfig(librsvg-2.0)
+BuildRequires:	librsvg
 # For converting icons
 BuildRequires:	imagemagick
 Requires:	lame
@@ -90,7 +90,7 @@ with a complete zoom- and scroll capability.
 %cmake_kde5 -DWITH_MP3=ON
 
 %build
-ninja -C build
+%ninja -C build
 
 %install
 %ninja_install -C build
