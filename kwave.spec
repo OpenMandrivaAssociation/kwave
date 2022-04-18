@@ -47,7 +47,7 @@ BuildRequires:	pkgconfig(samplerate)
 BuildRequires:	pkgconfig(vorbis)
 BuildRequires:	pkgconfig(zlib)
 BuildRequires:	id3lib-devel >= 3.8.1
-BuildRequires:	librsvg
+BuildRequires:	pkgconfig(librsvg-2.0)
 # For converting icons
 BuildRequires:	imagemagick
 Requires:	lame
