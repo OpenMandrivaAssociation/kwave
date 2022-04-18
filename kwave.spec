@@ -90,7 +90,7 @@ with a complete zoom- and scroll capability.
 %cmake_kde5 -DWITH_MP3=ON
 
 %build
-%ninja -C build
+ninja -C build
 
 %install
 %ninja_install -C build
