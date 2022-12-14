@@ -7,7 +7,7 @@
 
 Summary:	A sound editor for KDE
 Name:		kwave
-Version:	22.08.3
+Version:	22.12.0
 Release:	1
 License:	GPLv2+
 Group:		Sound
@@ -75,7 +75,6 @@ with a complete zoom- and scroll capability.
 %{_datadir}/%{name}
 %{_datadir}/applications/org.kde.kwave.desktop
 %{_libdir}/qt5/plugins/kwave
-%{_datadir}/kservicetypes5/kwave-plugin.desktop
 %{_datadir}/metainfo/org.kde.kwave.appdata.xml
 # Those are really internal libraries that can't be used by anything else.
 # They also aren't optional. There's no point in splitting them into lib
