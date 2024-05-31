@@ -16,6 +16,7 @@ Source0:	http://download.kde.org/%{stable}/release-service/%{version}/src/%{name
 #Patch0:		kwave-19.07.80-compile.patch
 BuildRequires:	pkgconfig(Qt5Concurrent)
 BuildRequires:	pkgconfig(Qt5Core)
+BuildRequires:	pkgconfig(Qt5Test)
 BuildRequires:	pkgconfig(Qt5Multimedia)
 BuildRequires:	pkgconfig(Qt5Widgets)
 BuildRequires:	cmake(ECM)
