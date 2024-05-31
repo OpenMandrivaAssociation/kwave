@@ -7,13 +7,13 @@
 
 Summary:	A sound editor for KDE
 Name:		kwave
-Version:	24.02.0
-Release:	2
+Version:	24.05.0
+Release:	1
 License:	GPLv2+
 Group:		Sound
 Url:		http://kwave.sourceforge.net/
 Source0:	http://download.kde.org/%{stable}/release-service/%{version}/src/%{name}-%{version}.tar.xz
-Patch0:		kwave-19.07.80-compile.patch
+#Patch0:		kwave-19.07.80-compile.patch
 BuildRequires:	pkgconfig(Qt5Concurrent)
 BuildRequires:	pkgconfig(Qt5Core)
 BuildRequires:	pkgconfig(Qt5Multimedia)
