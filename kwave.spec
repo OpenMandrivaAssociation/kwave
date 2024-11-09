@@ -7,7 +7,7 @@
 
 Summary:	A sound editor for KDE
 Name:		kwave
-Version:	24.05.0
+Version:	24.08.3
 Release:	1
 License:	GPLv2+
 Group:		Sound
