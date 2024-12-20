@@ -7,7 +7,7 @@
 
 Summary:	A sound editor for KDE
 Name:		kwave
-Version:	24.08.3
+Version:	24.12.0
 Release:	1
 License:	GPLv2+
 Group:		Sound
@@ -70,7 +70,7 @@ transform the wave-file in several ways and presents a graphical view
 with a complete zoom- and scroll capability.
 
 %files -f %{name}.lang
-%doc CHANGES README TODO
+%doc CHANGES TODO
 %{_bindir}/%{name}
 %{_iconsdir}/*/*/*/%{name}*
 %{_datadir}/%{name}
