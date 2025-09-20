@@ -7,36 +7,35 @@
 
 Summary:	A sound editor for KDE
 Name:		kwave
-Version:	24.12.0
-Release:	2
+Version:	25.08.1
+Release:	1
 License:	GPLv2+
 Group:		Sound
 Url:		https://kwave.sourceforge.net/
 Source0:	http://download.kde.org/%{stable}/release-service/%{version}/src/%{name}-%{version}.tar.xz
 #Patch0:		kwave-19.07.80-compile.patch
-BuildRequires:	pkgconfig(Qt5Concurrent)
-BuildRequires:	pkgconfig(Qt5Core)
-BuildRequires:	pkgconfig(Qt5Test)
-BuildRequires:	pkgconfig(Qt5Multimedia)
-BuildRequires:	pkgconfig(Qt5Widgets)
+BuildRequires:	pkgconfig(Qt6Concurrent)
+BuildRequires:	pkgconfig(Qt6Core)
+BuildRequires:	pkgconfig(Qt6Test)
+BuildRequires:	pkgconfig(Qt6Multimedia)
+BuildRequires:	pkgconfig(Qt6Widgets)
 BuildRequires:	cmake(ECM)
-BuildRequires:	cmake(KF5Completion)
-BuildRequires:	cmake(KF5Config)
-BuildRequires:	cmake(KF5ConfigWidgets)
-BuildRequires:	cmake(KF5CoreAddons)
-BuildRequires:	cmake(KF5Crash)
-BuildRequires:	cmake(KF5DBusAddons)
-BuildRequires:	cmake(KF5DocTools)
-BuildRequires:	cmake(KF5GuiAddons)
-BuildRequires:	cmake(KF5I18n)
-BuildRequires:	cmake(KF5IconThemes)
-BuildRequires:	cmake(KF5Init)
-BuildRequires:	cmake(KF5KIO)
-BuildRequires:	cmake(KF5Notifications)
-BuildRequires:	cmake(KF5Service)
-BuildRequires:	cmake(KF5TextWidgets)
-BuildRequires:	cmake(KF5XmlGui)
-BuildRequires:	cmake(KF5WidgetsAddons)
+BuildRequires:	cmake(KF6Completion)
+BuildRequires:	cmake(KF6Config)
+BuildRequires:	cmake(KF6ConfigWidgets)
+BuildRequires:	cmake(KF6CoreAddons)
+BuildRequires:	cmake(KF6Crash)
+BuildRequires:	cmake(KF6DBusAddons)
+BuildRequires:	cmake(KF6DocTools)
+BuildRequires:	cmake(KF6GuiAddons)
+BuildRequires:	cmake(KF6I18n)
+BuildRequires:	cmake(KF6IconThemes)
+BuildRequires:	cmake(KF6KIO)
+BuildRequires:	cmake(KF6Notifications)
+BuildRequires:	cmake(KF6Service)
+BuildRequires:	cmake(KF6TextWidgets)
+BuildRequires:	cmake(KF6XmlGui)
+BuildRequires:	cmake(KF6WidgetsAddons)
 BuildRequires:	pkgconfig(alsa)
 BuildRequires:	pkgconfig(audiofile)
 BuildRequires:	pkgconfig(fftw3)
@@ -72,11 +71,11 @@ with a complete zoom- and scroll capability.
 %files -f %{name}.lang
 %doc CHANGES TODO
 %{_bindir}/%{name}
-%{_iconsdir}/*/*/*/%{name}*
 %{_datadir}/%{name}
 %{_datadir}/applications/org.kde.kwave.desktop
 %{_libdir}/qt5/plugins/kwave
 %{_datadir}/metainfo/org.kde.kwave.appdata.xml
+%{_datadir}/icons/*/*/*/org.kde.kwave.*
 # Those are really internal libraries that can't be used by anything else.
 # They also aren't optional. There's no point in splitting them into lib
 # packages.
