@@ -8,7 +8,7 @@
 Summary:	A sound editor for KDE
 Name:		kwave
 Version:	25.12.2
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		Sound
 Url:		https://kwave.sourceforge.net/
@@ -67,6 +67,7 @@ Obsoletes:	%mklibname %{name} 18
 Obsoletes:	%mklibname %{name}gui 18
 Obsoletes:	%mklibname %{name} 19
 Obsoletes:	%mklibname %{name}gui 19
+%rename plasma6-kwave
 
 %description
 Kwave is a sound editor designed for the KDE Desktop Environment.
